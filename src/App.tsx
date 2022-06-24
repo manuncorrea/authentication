@@ -1,12 +1,11 @@
-import { Sigin } from "./pages/Sigin"
-import { SiginUp } from "./pages/SiginUp";
+import { AppRoutes } from "./routes";
 import GlobalStyle  from "./styles/global";
 
 function App() {
   return (
     <>
-      <SiginUp />
       <GlobalStyle />
+      <AppRoutes />
     </>
   
   )

@@ -5,19 +5,27 @@ import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
 import { BoxContent } from "../../components/BoxContent";
 import { Button } from '../../components/Button';
 import { Input } from "../../components/Input";
+import { Container } from './styles';
 
 export function Sigin() {
-  return(
-    <>
-      <BoxContent>
+  return (
+    <BoxContent>
+      <Container>
         <div>
-         <Input name="email" icon={FiMail} placeholder="E-mail" />
-         <Input name="password" type="password" icon={FiLock} placeholder="Senha" />
+          <Input name="email" icon={FiMail} placeholder="E-mail" />
+          <Input name="password" type="password" icon={FiLock} placeholder="Senha" />
 
-         <Button>Entrar</Button>
+          <Button>Entrar</Button>
 
+          <Link id="forgotPassword" to="#">Esqueci minha senha</Link>
         </div>
-      </BoxContent>
-    </>
+
+        <Link to="/signup">
+          <FiLogIn size={20} />
+          Criar Conta
+        </Link>
+
+      </Container>
+    </BoxContent>
   )
 }
