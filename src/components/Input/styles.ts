@@ -2,7 +2,8 @@ import styled, {css} from "styled-components";
 
 interface ContainerProps {
   isFocused: boolean;
-  isFilled: boolean;
+  isField: boolean;
+  
 }
 
 export const Container = styled.div<ContainerProps>`
@@ -11,26 +12,39 @@ export const Container = styled.div<ContainerProps>`
   margin: 12px 12px 0px 0px;
   border-radius: 8px;
   background: ${props => props.theme.colors.background};
+  
+  border: 2px solid ${props => props.theme.colors.background};
   color: rgb(255, 255, 255);
- // outline: 1px solid #61dafb;
-
 
   display: flex;
   align-items: center;
 
   & + div{
-   
     margin-top: 8px;
   }
+
+  svg{
+    margin-right: 16px;
+    color:rgb(40, 39, 44);
+
+    ${(props) => props.isFocused && css`
+      color: #61dafb;
+    `}
+
+    ${(props) => props.isField && css`
+      color: #61dafb;
+    `}
+  }
+
   ${(props) => props.isFocused && css`
-    color: #61dafb;
-    border-color: #61dafb;
-  `};
+      color: #61dafb;
+      border-color: #61dafb;
+    `}
 
-  ${(props) => props.isFilled && css`
-    color: #61dafb;
-  `}
-
+    ${(props) => props.isField && css`
+      color: #61dafb;
+    `}
+  
   input {
     flex: 1;
     border: 0;
@@ -43,8 +57,5 @@ export const Container = styled.div<ContainerProps>`
     }
   }
 
-  svg{
-    margin-right: 16px;
-    color:rgb(40, 39, 44);
-  }
+  
 `;

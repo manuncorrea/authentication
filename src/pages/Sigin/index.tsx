@@ -8,18 +8,21 @@ import { Input } from "../../components/Input";
 import { Container } from './styles';
 
 export function Sigin() {
+  function handleSubmit(data: object ) {
+    console.log(data)
+  }
   return (
     <>
       <BoxContent>
         <Container>
-          <div>
-            <Input name="email" icon={FiMail} placeholder="E-mail" />
-            <Input name="password" type="password" icon={FiLock} placeholder="Senha" />
+          <Form onSubmit={handleSubmit}>
+          <Input name="email" icon={FiMail} placeholder="E-mail"/>
+          <Input name="password" type="password" icon={FiLock} placeholder="Senha" />
 
             <Button>Entrar</Button>
 
             <Link id="forgotPassword" to="#">Esqueci minha senha</Link>
-          </div>
+          </Form>
 
           <Link to="/signup">
             <FiLogIn size={20} />
