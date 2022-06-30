@@ -4,7 +4,7 @@ import styled from "styled-components";
 export const Container = styled.div`
 
   a#forgotPassword{
-    color: #f4edef;
+    color: ${props => props.theme.colors.linkColor};
     display: block;
     text-align: center;
     margin-top: 24px;
@@ -13,7 +13,7 @@ export const Container = styled.div`
   }
 
   a {
-    color: #61dafb;
+    color: ${ props => props.theme.colors.primary};
     display: block;
     text-align: center;
     margin-top: 24px;
@@ -23,7 +23,7 @@ export const Container = styled.div`
         margin-right: 10px;
     }
     &:hover{
-      color: ${shade(0.2, '#61dafb')}
+      color: ${shade(0.2, '#38c8fd')}
     }
     }
 `;

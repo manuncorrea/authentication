@@ -10,7 +10,7 @@ export default createGlobalStyle`
   body {
     font-size: 1rem;
     font-family: 'Roboto', sans-serif;
-    background-color: #121214;
+    background-color: ${props => props.theme.colors.background};
     color: #fff;
   }
 

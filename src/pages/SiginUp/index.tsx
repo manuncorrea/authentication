@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { BoxContent } from "../../components/BoxContent";
 import { Button } from '../../components/Button';
+import { Header } from '../../components/Header';
 import { Input } from "../../components/Input";
 import { Container } from './styles';
 

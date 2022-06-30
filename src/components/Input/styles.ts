@@ -10,7 +10,7 @@ export const Container = styled.div<ContainerProps>`
   padding: 20px 30px;
   margin: 12px 12px 0px 0px;
   border-radius: 8px;
-  background: #121214;
+  background: ${props => props.theme.colors.background};
   color: rgb(255, 255, 255);
  // outline: 1px solid #61dafb;
 

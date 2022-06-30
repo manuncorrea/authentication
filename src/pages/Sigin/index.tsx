@@ -9,23 +9,25 @@ import { Container } from './styles';
 
 export function Sigin() {
   return (
-    <BoxContent>
-      <Container>
-        <div>
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
-          <Input name="password" type="password" icon={FiLock} placeholder="Senha" />
+    <>
+      <BoxContent>
+        <Container>
+          <div>
+            <Input name="email" icon={FiMail} placeholder="E-mail" />
+            <Input name="password" type="password" icon={FiLock} placeholder="Senha" />
 
-          <Button>Entrar</Button>
+            <Button>Entrar</Button>
 
-          <Link id="forgotPassword" to="#">Esqueci minha senha</Link>
-        </div>
+            <Link id="forgotPassword" to="#">Esqueci minha senha</Link>
+          </div>
 
-        <Link to="/signup">
-          <FiLogIn size={20} />
-          Criar Conta
-        </Link>
+          <Link to="/signup">
+            <FiLogIn size={20} />
+            Criar Conta
+          </Link>
 
-      </Container>
-    </BoxContent>
+        </Container>
+      </BoxContent>
+    </>
   )
 }
