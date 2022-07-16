@@ -1,8 +1,8 @@
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import { Container } from "./styles";
 
 interface IContent {
-  children?: ReactElement
+  children?: ReactNode
 }
 
 export function BoxContent({ children }: IContent) {

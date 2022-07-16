@@ -33,7 +33,7 @@ export function SiginUp() {
      });
 
      
-    } catch (err) {
+    } catch (err: any) {
       console.log(err);
       const errors = getValidationErrors(err);
 
