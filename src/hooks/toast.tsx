@@ -3,9 +3,9 @@ import { ToastContainer } from "../components/ToastContainer";
 
 import { v4 as uuidv4 } from "uuid";
 
-export interface ToastMessageProps {
+export interface ToastMessage {
   id: string;
-  type?: 'sucess' | 'error' | 'info';
+  type?: 'success' | 'error' | 'info';
   title: string;
   description?: string;
 
@@ -15,17 +15,17 @@ interface ToastProviderProps {
 }
 
 interface ToastContextDataProps {
-  addToast(message: Omit<ToastMessageProps, 'id'>): void;
+  addToast(message: Omit<ToastMessage, 'id'>): void;
   removeToast(id: string): void;
 }
 
 const ToastContext = createContext<ToastContextDataProps>({} as ToastContextDataProps);
 
 export function ToastProvider ({ children }: ToastProviderProps) {
-  const [messages, setMessages] = useState<ToastMessageProps[]>([]);
+  const [messages, setMessages] = useState<ToastMessage[]>([]);
 
 
-  const addToast = useCallback(({type, title, description}: Omit<ToastMessageProps, 'id'>) => {
+  const addToast = useCallback(({type, title, description}: Omit<ToastMessage, 'id'>) => {
    const id = uuidv4();
 
    const toast = {
