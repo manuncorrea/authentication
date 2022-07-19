@@ -1,10 +1,11 @@
-import { useCallback, useRef, useContext } from 'react';
+import { useCallback, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
 
 import * as Yup from 'yup';
 
-import { AuthContext } from '../../context/AuthContext';
+import { useAuth } from '../../hooks/auth';
+import { useToast } from '../../hooks/toast';
 
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -25,9 +26,8 @@ interface SignInFormData {
 export function Sigin() {
   const formRef = useRef<FormHandles>(null);
 
-  const { user, signIn } = useContext(AuthContext);
-
-  console.log(user)
+  const { signIn } = useAuth();
+  const { addToast } = useToast();
 
   const handleSubmit = useCallback(async (data: SignInFormData) => {
     try {
@@ -41,19 +41,27 @@ export function Sigin() {
       abortEarly: false, 
      });
 
-     signIn({
+     await signIn({
       email: data.email,
       password: data.password,
      });
 
      
     } catch (err: any) {
-     
-      const errors = getValidationErrors(err);
+      if(err instanceof Yup.ValidationError) {
 
-      formRef.current?.setErrors(errors);
+        const errors = getValidationErrors(err);
+  
+        formRef.current?.setErrors(errors);
+      }
+
+      addToast({
+        type: 'error',
+        title: 'Error na autenticação',
+        description: 'Ocorreu um erro ao fazer login, cheque as credenciais!'
+      });
     }
-  },[signIn],
+  },[signIn, addToast],
   );
   
   return (

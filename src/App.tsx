@@ -8,8 +8,7 @@ import GlobalStyle from "./styles/global";
 import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
 
-import { AuthProvider} from "./context/AuthContext";
-
+import { AppProvider } from "./hooks";
 
 function App() {
   const [theme, setTheme] = usePersistedState('theme', light);
@@ -18,13 +17,13 @@ function App() {
     setTheme(theme.title === 'light' ? dark : light);
   }
   return (
-    <AuthProvider>
       <ThemeProvider theme={theme}>
-        <Header toggleTheme={toggleTheme} />
-        <AppRoutes />
+        <AppProvider>
+          <Header toggleTheme={toggleTheme} />
+          <AppRoutes />
+        </AppProvider>
         <GlobalStyle />
       </ThemeProvider>
-    </AuthProvider>
   )
 }
 
