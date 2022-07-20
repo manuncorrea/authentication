@@ -9,6 +9,7 @@ import dark from "./styles/themes/dark";
 import light from "./styles/themes/light";
 
 import { AppProvider } from "./hooks";
+import { BrowserRouter } from 'react-router-dom';
 
 function App() {
   const [theme, setTheme] = usePersistedState('theme', light);
@@ -17,6 +18,7 @@ function App() {
     setTheme(theme.title === 'light' ? dark : light);
   }
   return (
+    <BrowserRouter>
       <ThemeProvider theme={theme}>
         <AppProvider>
           <Header toggleTheme={toggleTheme} />
@@ -24,6 +26,7 @@ function App() {
         </AppProvider>
         <GlobalStyle />
       </ThemeProvider>
+    </BrowserRouter>
   )
 }
 

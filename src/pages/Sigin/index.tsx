@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
 
 import * as Yup from 'yup';
@@ -29,6 +29,8 @@ export function Sigin() {
   const { signIn } = useAuth();
   const { addToast } = useToast();
 
+  const history = useHistory()
+
   const handleSubmit = useCallback(async (data: SignInFormData) => {
     try {
       formRef.current?.setErrors({}); // zerando os errors
@@ -46,6 +48,8 @@ export function Sigin() {
       password: data.password,
      });
 
+     history.push('/dasboard');
+
      
     } catch (err: any) {
       if(err instanceof Yup.ValidationError) {
@@ -53,6 +57,8 @@ export function Sigin() {
         const errors = getValidationErrors(err);
   
         formRef.current?.setErrors(errors);
+
+        return;
       }
 
       addToast({
@@ -78,10 +84,10 @@ export function Sigin() {
             <Link id="forgotPassword" to="#">Esqueci minha senha</Link>
           </Form>
 
-          <Link to="/signup">
+          <a href="/signup">
             <FiLogIn size={20} />
             Criar Conta
-          </Link>
+          </a>
 
         </Container>
       </BoxContent>
