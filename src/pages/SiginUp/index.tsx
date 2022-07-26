@@ -1,7 +1,7 @@
 
 import { useCallback, useRef } from 'react';
 import { FiArrowLeft, FiLock, FiMail, FiUser } from 'react-icons/fi'
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
@@ -20,7 +20,6 @@ import { Input } from "../../components/Input";
 
 import { Container } from './styles';
 
-
 interface SignUpFormData {
   name: string;
   email: string;
@@ -30,7 +29,7 @@ interface SignUpFormData {
 export function SiginUp() {
  const formRef = useRef<FormHandles>(null);
  const { addToast } = useToast();
- const history = useHistory();
+ const navigate = useNavigate();
 
  const handleSubmit = useCallback(async (data: SignUpFormData) => {
     try{
@@ -48,7 +47,7 @@ export function SiginUp() {
 
      await api.post('/users', data);
 
-     history.push('/');
+     navigate("/");
      addToast({
       type: 'success',
       title: 'Cadastro realizado!',
@@ -71,7 +70,7 @@ export function SiginUp() {
         description: 'Ocorreu um erro ao fazer seu cadastro, tente novamente!'
       });
     }
-  }, [addToast, history]);
+  }, [addToast, navigate]);
 
   return(
     <>
@@ -88,10 +87,10 @@ export function SiginUp() {
 
           </Form>
 
-          <a href="/">
+          <Link to="/">
             <FiArrowLeft />
             Login
-          </a>
+          </Link> 
 
         </Container>
       </BoxContent>

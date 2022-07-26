@@ -1,5 +1,5 @@
 import { useCallback, useRef } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiLock, FiLogIn, FiMail } from 'react-icons/fi';
 
 import * as Yup from 'yup';
@@ -29,7 +29,7 @@ export function Sigin() {
   const { signIn } = useAuth();
   const { addToast } = useToast();
 
-  const history = useHistory()
+  const navigate = useNavigate()
 
   const handleSubmit = useCallback(async (data: SignInFormData) => {
     try {
@@ -48,7 +48,7 @@ export function Sigin() {
       password: data.password,
      });
 
-     history.push('/dasboard');
+     navigate('/home');
 
      
     } catch (err: any) {
@@ -84,10 +84,10 @@ export function Sigin() {
             <Link id="forgotPassword" to="#">Esqueci minha senha</Link>
           </Form>
 
-          <a href="/signup">
+          <Link to="/signup">
             <FiLogIn size={20} />
             Criar Conta
-          </a>
+          </Link>
 
         </Container>
       </BoxContent>
