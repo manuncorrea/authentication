@@ -11,19 +11,32 @@ const PrivateRoute = ({ children, redirectTo }) => {
   return isAuthenticated ? children : <Navigate to={redirectTo} />;
 }
 
+//@ts-ignore
+const PublicRoute = ({ children, redirectTo }) => {
+  const isAuthenticated = localStorage.getItem('@Authentication:token') === null;
+  console.log("isAuth: ", isAuthenticated);
+  return isAuthenticated ? children : <Navigate to={redirectTo} />;
+}
+
 export function AppRoutes() {
   return (
-      <Routes>
-        <Route
-          path="/home"
-          element={
-            <PrivateRoute redirectTo="/">
-              <Home />
-            </PrivateRoute>
-          }
-        />
-        <Route path="/" element={<Sigin />} />
-        <Route path="/signup" element={<SiginUp />} />
-      </Routes>
+    <Routes>
+      <Route
+        path="/home"
+        element={
+          <PrivateRoute redirectTo="/">
+            <Home />
+          </PrivateRoute>
+        }
+      />
+      <Route path="/"
+        element={
+          <PublicRoute redirectTo="/home">
+            <Sigin />
+          </PublicRoute>
+        }
+      />
+      <Route path="/signup" element={<SiginUp />} />
+    </Routes>
   )
 }
