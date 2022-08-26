@@ -10,9 +10,9 @@ import { useToast } from '../../hooks/toast';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 
-import { BoxContent } from "../../components/BoxContent";
+import { BoxContent } from '../../components/BoxContent';
 import { Button } from '../../components/Button';
-import { Input } from "../../components/Input";
+import { Input } from '../../components/Input';
 
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -76,15 +76,15 @@ export function Sigin() {
         <Container>
           <Form ref={formRef} onSubmit={handleSubmit}>
             
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
-          <Input name="password" icon={FiLock} type="password" placeholder="Senha" />
+          <Input name='email' icon={FiMail} placeholder='E-mail' />
+          <Input name='password' icon={FiLock} type='password' placeholder='Senha' />
 
-            <Button type="submit">Entrar</Button>
+            <Button type='submit'>Entrar</Button>
 
-            <Link id="forgotPassword" to="#">Esqueci minha senha</Link>
+            <Link id='forgotPassword' to='#'>Esqueci minha senha</Link>
           </Form>
 
-          <Link to="/signup">
+          <Link to='/signup'>
             <FiLogIn size={20} />
             Criar Conta
           </Link>

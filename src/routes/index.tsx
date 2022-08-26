@@ -1,20 +1,20 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from 'react-router-dom';
 
-import { Sigin } from "../pages/Sigin";
-import { SiginUp } from "../pages/SiginUp";
-import { Home } from "../pages/Home";
+import { Sigin } from '../pages/Sigin';
+import { SiginUp } from '../pages/SiginUp';
+import { Home } from '../pages/Home';
 
 //@ts-ignore
 const PrivateRoute = ({ children, redirectTo }) => {
   const isAuthenticated = localStorage.getItem('@Authentication:token') !== null;
-  console.log("isAuth: ", isAuthenticated);
+  console.log('isAuth: ', isAuthenticated);
   return isAuthenticated ? children : <Navigate to={redirectTo} />;
 }
 
 //@ts-ignore
 const PublicRoute = ({ children, redirectTo }) => {
   const isAuthenticated = localStorage.getItem('@Authentication:token') === null;
-  console.log("isAuth: ", isAuthenticated);
+  console.log('isAuth: ', isAuthenticated);
   return isAuthenticated ? children : <Navigate to={redirectTo} />;
 }
 
@@ -22,21 +22,22 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route
-        path="/home"
+        path='/home'
         element={
-          <PrivateRoute redirectTo="/">
+          <PrivateRoute redirectTo='/'>
             <Home />
           </PrivateRoute>
         }
       />
-      <Route path="/"
+      <Route path='/'
         element={
-          <PublicRoute redirectTo="/home">
+          <PublicRoute redirectTo='/home'>
             <Sigin />
           </PublicRoute>
         }
       />
-      <Route path="/signup" element={<SiginUp />} />
+      
+      <Route path='/signup' element={<SiginUp />} />
     </Routes>
   )
 }

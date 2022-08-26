@@ -12,11 +12,9 @@ import api from '../../services/api';
 import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
-
-import { BoxContent } from "../../components/BoxContent";
+import { BoxContent } from '../../components/BoxContent';
 import { Button } from '../../components/Button';
-import { Input } from "../../components/Input";
-
+import { Input } from '../../components/Input';
 
 import { Container } from './styles';
 
@@ -24,7 +22,7 @@ interface SignUpFormData {
   name: string;
   email: string;
   password: string;
-}
+};
 
 export function SiginUp() {
  const formRef = useRef<FormHandles>(null);
@@ -47,7 +45,7 @@ export function SiginUp() {
 
      await api.post('/users', data);
 
-     navigate("/");
+     navigate('/');
      addToast({
       type: 'success',
       title: 'Cadastro realizado!',
@@ -79,15 +77,15 @@ export function SiginUp() {
 
           <Form ref={formRef} onSubmit={handleSubmit}>
 
-          <Input name="name" icon={FiUser} placeholder="Nome" />
-          <Input name="email" icon={FiMail} placeholder="E-mail"/>
-          <Input name="password" type="password" icon={FiLock} placeholder="Senha" />
+          <Input name='name' icon={FiUser} placeholder='Nome' />
+          <Input name='email' icon={FiMail} placeholder='E-mail'/>
+          <Input name='password' type='password' icon={FiLock} placeholder='Senha' />
 
-          <Button type="submit">Cadastrar</Button>
+          <Button type='submit'>Cadastrar</Button>
 
           </Form>
 
-          <Link to="/">
+          <Link to='/'>
             <FiArrowLeft />
             Login
           </Link> 
@@ -95,5 +93,5 @@ export function SiginUp() {
         </Container>
       </BoxContent>
     </>
-  )
-}
+  );
+};

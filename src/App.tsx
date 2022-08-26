@@ -1,14 +1,14 @@
-import { AppRoutes } from "./routes";
-import { ThemeProvider } from "styled-components";
-import { Header } from "./components/Header";
+import { AppRoutes } from './routes';
+import { ThemeProvider } from 'styled-components';
+import { Header } from './components/Header';
 
-import usePersistedState from "./utils/usePersistedSate";
-import GlobalStyle from "./styles/global";
+import usePersistedState from './utils/usePersistedSate';
+import GlobalStyle from './styles/global';
 
-import dark from "./styles/themes/dark";
-import light from "./styles/themes/light";
+import dark from './styles/themes/dark';
+import light from './styles/themes/light';
 
-import { AppProvider } from "./hooks";
+import { AppProvider } from './hooks';
 import { BrowserRouter } from 'react-router-dom';
 
 function App() {
